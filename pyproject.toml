@@ -1,0 +1,25 @@
+[build-system]
+build-backend = "setuptools.build_meta"
+requires = [
+  "setuptools >= 61.0",
+]
+
+[project]
+name = "python-docs-generator"
+version = "0.1.0"
+authors = [
+  { name = "Jhunu Fernandes", email = "jhunu.fernandes@gmail.com" },
+]
+description = "A core package for generating Python Docs using MkDocs."
+readme = "README.md"
+requires-python = ">= 3.11"
+dependencies = [
+  "mkdocs",
+  "tomli",
+  "typer",
+  "jinja2",
+  "cookiecutter",
+]
+
+[project.scripts]
+python_docs_generator_cli = "python_docs_generator:app"
