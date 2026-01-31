@@ -21,5 +21,13 @@ dependencies = [
   "cookiecutter",
 ]
 
+[project.optional-dependencies]
+dev = [
+]
+tests = [
+]
+stage = [
+]
+
 [project.scripts]
 python_docs_generator_cli = "python_docs_generator:app"
