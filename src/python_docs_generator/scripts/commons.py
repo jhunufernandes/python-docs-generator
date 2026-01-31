@@ -10,9 +10,8 @@ from typer import echo
 
 ROOT_PATH = Path()
 DOCS_PATH = ROOT_PATH / "docs" / "docs"
-TEMPLATES_PATH = Path(__file__).parent / "templates"
 
-Templates = Environment(loader=FileSystemLoader(str(TEMPLATES_PATH)))
+Templates = Environment(loader=FileSystemLoader(str(Path(__file__).parent / "templates")))
 TypesMapping = Literal["module", "function", "class"]
 
 
@@ -26,7 +25,7 @@ def read_pyproject(path: Path | None = None) -> dict[str, Any]:
         dict[str, Any]: The content of the pyproject.toml file as a dictionary
     """
     path = ROOT_PATH / "pyproject.toml" or path
-    with Path.open(path) as pyproject_file:
+    with open(path) as pyproject_file:
         return loads(pyproject_file.read())
 
 
@@ -44,6 +43,17 @@ def to_snake_case(string: str) -> str:
     return sub(r"-", "_", s2).lower()
 
 
+def create_directory(path: Path) -> None:
+    """Creates a directory if it does not exist.
+
+    Args:
+        path (Path): The path of the directory to create.
+    """
+    echo(f"Creating directory at {path}")
+    path.mkdir(parents=True, exist_ok=True)
+    echo(f"Directory created at {path}")
+
+
 def _get_import_type_mapping(_import: Any) -> TypesMapping | None:
     import_type: Any = type(_import)  # type: ignore
     if import_type == ModuleType:
@@ -52,7 +62,6 @@ def _get_import_type_mapping(_import: Any) -> TypesMapping | None:
         return "function"
     if isinstance(_import, type):
         return "class"
-    return None
 
 
 def _get_docstring(obj: Any) -> str:
@@ -119,7 +128,6 @@ def get_imports_from_module(module: ModuleType, level: int) -> list[Doc]:
         filename = _import.__name__
         sub = []
         import_type = _get_import_type_mapping(_import) or ""
-        api_path = DOCS_PATH / "api"
         if import_type == "module":
             name = _import.__spec__.name
             sub = get_imports_from_module(_import, level + 1)
@@ -128,7 +136,7 @@ def get_imports_from_module(module: ModuleType, level: int) -> list[Doc]:
         docs.append(
             Doc(
                 name=name,
-                path=api_path / f"{import_type}_{filename}.md",
+                path=DOCS_PATH / "api" / f"{import_type}_{filename}.md",
                 docstring=_get_docstring(_import),
                 level=level,
                 sub=sub,
@@ -137,7 +145,7 @@ def get_imports_from_module(module: ModuleType, level: int) -> list[Doc]:
     return docs
 
 
-class BaseDocsGenerator:
+class DocsGenerator:
     """Base class for documentation generators."""
 
     def __init__(
@@ -157,33 +165,10 @@ class BaseDocsGenerator:
         self.organization_name = organization_name or "jhunufernandes"
         self.project_name = project_name
 
-    def concatenate(self, file: str, path: Path | None = None) -> None:
-        """Generate the README file by concatenating documentation files.
-
-        Args:
-            file (str): The name of the file to generate (e.g., "index.md").
-            path (Path | None): The path where the file will be saved. Defaults to DOCS_PATH.
-        """
-        echo(f"Generating {file}")
-
-        echo(f"Writing {file}")
-        path = path or DOCS_PATH
-        full_path = path / file
-        with Path.open(full_path, "w") as f:
-            for file_to_concatenate in [
-                DOCS_PATH / f"{i}.md" for i in ["index", "requirements", "installation", "usage"]
-            ]:
-                echo(f"Concatenating doc: {file_to_concatenate.name}")
-                with Path.open(file_to_concatenate) as _f:
-                    f.write(_f.read())
-                    f.write("\n")
-
-        echo(f"Generated {full_path}")
-
     def render(
         self,
-        file: str,
-        path: Path | None = None,
+        template_file: str,
+        destiny_path: Path | None = None,
         new_file: str | None = None,
         **kwargs: Any,
     ) -> None:
@@ -194,13 +179,13 @@ class BaseDocsGenerator:
         Args:
             file (str): The name of the file to generate (e.g., "index.md").
             path (Path | None): The path where the file will be saved. Defaults to DOCS_PATH.
-            new_file (str | None): If provided, the content will be written to this new file instead of `file`.
+            new_file (str | None): If provided, the content will be written to this new file instead of `template_file`.
             **kwargs (Any): Additional keyword arguments to pass to the template rendering.
         """
-        echo(f"Generating {file}")
+        echo(f"Generating {template_file}")
 
         echo("Rendering the template with the data")
-        template = Templates.get_template(file)  # type: ignore
+        template = Templates.get_template(template_file)  # type: ignore
         content: str = template.render(  # type: ignore
             **self.pyproject_content,
             organization_name=self.organization_name,
@@ -208,11 +193,13 @@ class BaseDocsGenerator:
             **kwargs or {},
         )
 
-        file = new_file or file
-        path = path or DOCS_PATH
-        full_path = path / file
-        echo(f"Writing {full_path}")
-        with Path.open(full_path, "w") as f:
+        destiny_file = new_file or template_file
+        destiny_path = destiny_path or DOCS_PATH
+        destiny_file_path = destiny_path / destiny_file
+
+        create_directory(destiny_path or DOCS_PATH)
+        echo(f"Writing {destiny_file_path}")
+        with open(destiny_file_path, "w") as f:
             f.write(content)  # type: ignore
 
-        echo(f"Generated {full_path}")
+        echo(f"Generated {destiny_file_path}")

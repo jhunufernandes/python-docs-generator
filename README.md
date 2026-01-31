@@ -1,18 +1,3 @@
-Metadata-Version: 2.4
-Name: python-docs-generator
-Version: 0.1.0
-Summary: A core package for generating Python Docs using MkDocs.
-Author-email: Jhunu Fernandes <jhunu.fernandes@gmail.com>
-Requires-Python: >=3.11
-Description-Content-Type: text/markdown
-License-File: LICENSE
-Requires-Dist: mkdocs
-Requires-Dist: tomli
-Requires-Dist: typer
-Requires-Dist: jinja2
-Requires-Dist: cookiecutter
-Dynamic: license-file
-
 <p align="center">
     <a href="https://jhunufernandes.github.io/python-docs-generator/images/python-docs-generator.svg">
         <img src="https://jhunufernandes.github.io/python-docs-generator/images/python-docs-generator.svg" alt="python-docs-generator">

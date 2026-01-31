@@ -3,10 +3,10 @@
 Provides Typer CLI commands for generating, updating, and serving documentation and projects.
 """
 
-from mkdocs.commands.serve import serve
+from mkdocs.commands.serve import serve as mkdocs_serve
 from typer import Typer, echo
 
-from .scripts import Generate
+from .scripts import Generate, GenerateOptionsEnum
 from .scripts.commons import ROOT_PATH
 
 app = Typer()
@@ -24,7 +24,7 @@ def deploy() -> None:
 
 
 @app.command()
-def generate(option: Generate.GenerateOptionsEnum, project_name: str | None = None) -> None:
+def generate(option: GenerateOptionsEnum, project_name: str | None = None) -> None:
     Generate.execute(option, project_name)
 
 
@@ -33,4 +33,4 @@ def serve() -> None:
     echo("Serving documentation...")
 
     config_file_path = str(ROOT_PATH / "docs" / "mkdocs.yml")
-    serve(config_file_path)  # type: ignore
+    mkdocs_serve(config_file_path)  # type: ignore

@@ -1,3 +1,6 @@
+LICENSE
+MANIFEST.in
+README.md
 pyproject.toml
 src/python_docs_generator/__init__.py
 src/python_docs_generator/__main__.py
@@ -9,3 +12,11 @@ src/python_docs_generator.egg-info/requires.txt
 src/python_docs_generator.egg-info/top_level.txt
 src/python_docs_generator/scripts/__init__.py
 src/python_docs_generator/scripts/commons.py
+src/python_docs_generator/scripts/templates/docstring.md
+src/python_docs_generator/scripts/templates/index.md
+src/python_docs_generator/scripts/templates/installation.md
+src/python_docs_generator/scripts/templates/license.md
+src/python_docs_generator/scripts/templates/logo.svg
+src/python_docs_generator/scripts/templates/mkdocs.yml
+src/python_docs_generator/scripts/templates/requirements.md
+src/python_docs_generator/scripts/templates/usage.md
