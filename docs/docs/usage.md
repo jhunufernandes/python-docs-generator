@@ -8,7 +8,7 @@ This package provides a CLI tool to generate and manage documentation:
 
 ```bash
 # Generate first python project
-python_docs_generator_cli generate project
+python_docs_generator_cli generate project --project-name my_project
 
 # Generate complete documentation
 python_docs_generator_cli generate docs
@@ -21,7 +21,6 @@ python_docs_generator_cli generate docstring
 python_docs_generator_cli generate mkdocs
 python_docs_generator_cli generate licence
 python_docs_generator_cli generate readme
-python_docs_generator_cli generate requirements
 
 # Serve documentation locally
 python_docs_generator_cli serve

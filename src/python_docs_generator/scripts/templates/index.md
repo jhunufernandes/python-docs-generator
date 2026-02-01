@@ -32,16 +32,3 @@
 **Source**: [https://github.com/{{ organization_name }}/{{ project["name"] }}/](https://github.com/{{ organization_name }}/{{ project["name"] }}/)
 
 **Board**: [https://github.com/users/{{ organization_name }}/projects/1/](https://github.com/users/{{ organization_name }}/projects/1/)
-
----
-
-### Overview
-
-{{ project["name"] }} is a Python documentation generator that automates the creation of comprehensive documentation using MkDocs. It extracts metadata from your `pyproject.toml`, generates API references from docstrings, and creates a complete documentation site with minimal configuration.
-
-**Key Features:**
-- 📝 Automatic API documentation generation from Python docstrings
-- 🎨 Customizable Jinja2 templates for consistent documentation styling
-- 🚀 One-command documentation generation and deployment
-- 📦 Integration with MkDocs for beautiful, searchable documentation
-- 🔄 Support for multiple documentation components (requirements, installation, usage)
