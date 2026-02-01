@@ -204,6 +204,11 @@ class Generate:
                 docs_generator.render("requirements.md")
 
             case GenerateOptionsEnum.usage:
+                usage_file = DOCS_PATH / "usage.md"
+                if usage_file.exists():
+                    echo(f"{usage_file} already exists, skipping generation")
+                    return
+
                 pyproject_content = read_pyproject()
                 docs_generator = DocsGenerator(pyproject_content, project_name=project_name)
 

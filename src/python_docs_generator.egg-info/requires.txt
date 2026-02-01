@@ -1,5 +1,0 @@
-mkdocs
-tomli
-typer
-jinja2
-cookiecutter
