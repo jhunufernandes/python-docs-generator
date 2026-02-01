@@ -167,7 +167,7 @@ class Generate:
 
                 echo("Cloning template")
                 cookiecutter(  # type: ignore
-                    "gh:jhunufernandes/python-package-template",
+                    "https://github.com/jhunufernandes/python-package-template.git",
                     no_input=True,
                     extra_context={
                         "full_name": "Jhunu Fernandes",
