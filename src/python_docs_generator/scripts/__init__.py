@@ -170,6 +170,9 @@ class Generate:
                     "gh:jhunufernandes/python-package-template",
                     no_input=True,
                     extra_context={
+                        "full_name": "Jhunu Fernandes",
+                        "email": "jhunu.fernandes@gmail.com",
+                        "project_short_description": "{...}.",
                         "project_name": project_name,
                         "project_slug": to_snake_case(project_name),
                     },
