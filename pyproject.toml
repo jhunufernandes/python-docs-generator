@@ -1,7 +1,7 @@
 [build-system]
 build-backend = "setuptools.build_meta"
 requires = [
-  "setuptools",
+  "setuptools >= 80.9.0",
 ]
 
 [project]
@@ -10,23 +10,26 @@ version = "0.1.0"
 authors = [
   { name = "Jhunu Fernandes", email = "jhunu.fernandes@gmail.com" },
 ]
-description = "A core package for generating Python Docs using MkDocs."
+description = "An automated documentation generator for Python projects that creates comprehensive MkDocs sites from pyproject.toml metadata and module docstrings with customizable Jinja2 templates."
 readme = "README.md"
 requires-python = ">= 3.11"
 dependencies = [
-  "mkdocs",
-  "tomli",
-  "typer",
-  "jinja2",
-  "cookiecutter",
+  "mkdocs >= 1.6.1",
+  "tomli >= 2.4.0",
+  "typer >= 0.21.1",
+  "jinja2 >= 3.1.6",
+  "cookiecutter >= 2.6.0",
 ]
 
 [project.optional-dependencies]
 dev = [
 ]
 tests = [
+  "coverage[toml] >= 7.13.2",
 ]
 stage = [
+  "build >= 1.4.0",
+  "coverage[toml] >= 7.13.2",
 ]
 
 [project.scripts]

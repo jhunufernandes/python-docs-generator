@@ -6,11 +6,17 @@ Author-email: Jhunu Fernandes <jhunu.fernandes@gmail.com>
 Requires-Python: >=3.11
 Description-Content-Type: text/markdown
 License-File: LICENSE
-Requires-Dist: mkdocs
-Requires-Dist: tomli
-Requires-Dist: typer
-Requires-Dist: jinja2
-Requires-Dist: cookiecutter
+Requires-Dist: mkdocs>=1.6.1
+Requires-Dist: tomli>=2.4.0
+Requires-Dist: typer>=0.21.1
+Requires-Dist: jinja2>=3.1.6
+Requires-Dist: cookiecutter>=2.6.0
+Provides-Extra: dev
+Provides-Extra: tests
+Requires-Dist: coverage[toml]; extra == "tests"
+Provides-Extra: stage
+Requires-Dist: build; extra == "stage"
+Requires-Dist: coverage[toml]; extra == "stage"
 Dynamic: license-file
 
 <p align="center">
