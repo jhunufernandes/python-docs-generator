@@ -5,7 +5,6 @@ on:
       - development
 jobs:
   install-deps:
-  .github/workflows/.github/workflows/deps.yml
     uses: jhunufernandes/python-github-actions/.github/workflows/deps.yml@main
     with:
       pip_args: stage
