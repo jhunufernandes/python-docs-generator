@@ -173,15 +173,12 @@ class Generate:
                         "full_name": "Jhunu Fernandes",
                         "email": "jhunu.fernandes@gmail.com",
                         "project_short_description": "{...}.",
+                        "organization_name": "jhunufernandes",
                         "project_name": project_name,
                         "project_slug": to_snake_case(project_name),
                     },
                     overwrite_if_exists=True,
                 )
-
-                Generate.execute(GenerateOptionsEnum.logo, project_name)
-                Generate.execute(GenerateOptionsEnum.licence)
-
             case GenerateOptionsEnum.readme:
                 Generate.execute(GenerateOptionsEnum.index_file)
                 Generate.execute(GenerateOptionsEnum.requirements)

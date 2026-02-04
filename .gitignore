@@ -1,13 +1,13 @@
 # Environments
-.venv
-.env
+*.venv
+*.env
 
 # Byte-compiled / optimized / DLL files
 __pycache__
 build
 dist
-.coverage
-.egg-info
+*.coverage
+*.egg-info
 
 # Custom byte-compiled files
 .db
@@ -16,7 +16,7 @@ dist
 *_cache
 
 # IDEs and editors
-.vscode
+*.vscode
 
 # OS files
-.DS_Store
+*.DS_Store
