@@ -5,9 +5,9 @@
     zoomAndPan="magnify"
     preserveAspectRatio="xMidYMid meet"
     version="1.0"
-    width="7125"
+    width="23125"
     height="3125"
-    viewBox="0 0 6093.75 2343.75"
+    viewBox="0 0 18093.75 2343.75"
 >
     <defs />
     <path
@@ -21,6 +21,6 @@
         x="2343.75"
         y="1562.5"
     >
-        jhunu
+        python-docs-generator
     </text>
 </svg>

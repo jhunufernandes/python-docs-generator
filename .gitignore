@@ -6,6 +6,7 @@
 __pycache__
 build
 dist
+site
 *.coverage
 *.egg-info
 
