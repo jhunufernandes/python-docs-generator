@@ -1,0 +1,19 @@
+nav:
+- Home: index.md
+- Requirements: requirements.md
+- Installation: installation.md
+- Usage: usage.md
+- About:
+  - License: license.md
+  - Release Notes: https://github.com/jhunufernandes/python-docs-generator/releases
+  - Issue Tracker: https://github.com/jhunufernandes/python-docs-generator/issues
+- API Reference: []
+repo_name: python-docs-generator
+repo_url: https://github.com/jhunufernandes/python-docs-generator/
+site_author: Jhunu Fernandes
+site_description: An automated documentation generator for Python projects that creates
+  comprehensive MkDocs sites from pyproject.toml metadata and module docstrings with
+  customizable Jinja2 templates.
+site_name: python-docs-generator
+site_url: https://jhunufernandes.github.io/python-docs-generator/
+theme: readthedocs
