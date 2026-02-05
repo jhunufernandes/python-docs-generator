@@ -8,10 +8,11 @@ from dataclasses import dataclass
 from tomli import loads
 from typer import echo
 
-ROOT_PATH = Path()
+ROOT_PATH = Path(__file__).parent.parent.parent.parent.absolute()
 DOCS_PATH = ROOT_PATH / "docs" / "docs"
+TEMPLATES_PATH = ROOT_PATH / "src" / "python_docs_generator" / "scripts" / "templates"
 
-Templates = Environment(loader=FileSystemLoader(str(Path(__file__).parent / "templates")))
+Templates = Environment(loader=FileSystemLoader(str(TEMPLATES_PATH)))
 TypesMapping = Literal["module", "function", "class"]
 
 
