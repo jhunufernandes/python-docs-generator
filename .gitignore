@@ -6,11 +6,9 @@
 __pycache__
 build
 dist
+site
 *.coverage
 *.egg-info
-
-# Custom byte-compiled files
-.db
 
 # Cache directories
 *_cache
