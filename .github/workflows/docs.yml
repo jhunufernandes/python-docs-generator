@@ -11,14 +11,4 @@ jobs:
   deploy-docs:
     needs:
       - install-deps
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/download-artifact@v4
-        with:
-          name: python-deps-stage
-          path: .
-      - run: |
-          unzip venv.zip
-      - run: |
-          .venv/bin/python -m mkdocs gh-deploy -f docs/mkdocs.yml --force
+    uses: jhunufernandes/python-github-actions/.github/workflows/docs.yml@main
