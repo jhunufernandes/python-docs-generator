@@ -12,3 +12,5 @@ jobs:
     needs:
       - install-deps
     uses: jhunufernandes/python-github-actions/.github/workflows/docs.yml@main
+    with:
+      pip_args: stage
