@@ -6,7 +6,7 @@ requires = [
 
 [project]
 name = "python-docs-generator"
-version = "0.1.0"
+version = "0.1.1"
 authors = [
   { name = "Jhunu Fernandes", email = "jhunu.fernandes@gmail.com" },
 ]
