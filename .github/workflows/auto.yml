@@ -1,0 +1,9 @@
+name: auto
+on:
+  issues:
+    types: [opened]
+jobs:
+  call-auto:
+    uses: jhunufernandes/python-github-actions/.github/workflows/auto.yml@main
+    with:
+      pr_destiny: development
